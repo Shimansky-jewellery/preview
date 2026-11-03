@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tsavorite Guide – Preview</title>
+<style>
+body{margin:0;background:#fff;color:#111;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.preview-bar{background:#1f6b4a;color:#fff;text-align:center;font-size:12px;letter-spacing:.08em;padding:8px 16px}
+header.site{border-bottom:1px solid #eee;padding:18px 16px 0;text-align:center;position:sticky;top:0;background:#fff;z-index:5}
+.logo{font-size:28px;font-weight:700;letter-spacing:.22em;margin:0 0 14px}
+nav.main{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 34px;font-size:13px;letter-spacing:.04em;padding-bottom:14px}
+nav.main span{white-space:nowrap}
+.hero{height:440px;background:#ececec}
+.hero .tsv-ph{border:0!important;background:#e9e9e9!important;aspect-ratio:auto!important;height:100%}
+.card{position:relative;max-width:920px;margin:-70px auto 0;background:#fff;padding:36px 44px 8px}
+.card h1{font-weight:400;font-size:32px;line-height:1.25;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+.byline{font-style:italic;font-size:14px;color:#333;line-height:1.6;margin-bottom:8px}
+.hero-cap{max-width:920px;margin:0 auto;padding:0 44px;font-size:13px;color:#666;font-style:italic}
+.card .tsv-guide{max-width:none;padding:0}
+.section{max-width:1380px;margin:56px auto 0;padding:0 16px}
+.rt{text-align:center;max-width:760px;margin:0 auto 28px}
+.rt h2{font-weight:400;font-size:22px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+.rt p{font-size:15px;line-height:1.7;color:#333;margin:0}
+.overlay{height:380px;background:#e9e9e9;position:relative}
+.stores{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:20px}
+.store{border:1px solid #e3e3e3;padding:22px 20px;font-size:13px}
+.store h3{font-weight:400;font-size:13px;letter-spacing:.14em;text-transform:uppercase;line-height:1.5;margin:0 0 12px}
+.store .hrs{margin:0 0 8px}
+.store .row{display:flex;justify-content:space-between;gap:10px;margin-top:8px}
+.store .row.end{justify-content:flex-end;margin-top:14px}
+.store a{text-decoration:none}
+.store a.ul{text-decoration:underline;text-underline-offset:4px}
+.faq{max-width:600px;margin:64px auto 0;padding:0 16px}
+.faq h2{text-align:center;font-weight:400;font-size:28px;letter-spacing:.1em;margin:0 0 28px}
+.faq details{border-top:1px solid #ddd}
+.faq details:last-child{border-bottom:1px solid #ddd}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:22px 0;font-size:15px;line-height:1.45}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:20px;line-height:1;font-weight:300}
+.faq details[open] summary::after{content:"–"}
+.faq-a{padding:0 0 20px;font-size:14px;line-height:1.7;color:#333}
+.faq-a p{margin:0}
+footer.site{margin-top:80px;background:#111;color:#bbb;text-align:center;font-size:12px;letter-spacing:.08em;padding:36px 16px}
+@media (max-width:989px){.stores{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:749px){
+ nav.main{display:none} .logo{font-size:22px}
+ .hero{height:260px}
+ .card{margin:-40px 12px 0;padding:24px 16px 4px}
+ .card h1{font-size:22px;letter-spacing:.1em}
+ .hero-cap{padding:0 16px}
+ .stores{grid-template-columns:1fr}
+ .overlay{height:240px}
+ .faq h2{font-size:22px}
+}
+</style>
+<style>
+/* ===== Guide article template (e.g. Tsavorite guide) =====
+   Only styles content inside <div class="tsv-guide">, so nothing else on the site is affected. */
+.tsv-guide {
+  --tsv-ink: #111;
+  --tsv-muted: #666;
+  --tsv-line: #e5e5e5;
+  --tsv-soft: #f9f9f9;
+  --tsv-accent: #111;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+  color: var(--tsv-ink);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.tsv-guide * { box-sizing: border-box; }
+.tsv-guide p { margin: 0 0 1em; }
+.tsv-guide a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.tsv-guide a:hover { color: var(--tsv-accent); }
+
+/* Headings */
+.tsv-guide h2 {
+  margin: 56px 0 16px;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  scroll-margin-top: 110px;   /* so jump links don't hide under the sticky header */
+}
+.tsv-guide h3 {
+  margin: 32px 0 10px;
+  font-size: 16px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.tsv-guide ul, .tsv-guide ol { margin: 0 0 1.2em; padding-left: 1.2em; }
+.tsv-guide li { margin-bottom: .45em; }
+
+/* Byline */
+.tsv-byline {
+  margin: 8px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--tsv-line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--tsv-muted);
+  letter-spacing: .03em;
+}
+
+/* Images */
+.tsv-figure { margin: 32px 0; }
+.tsv-figure img, .tsv-figure video { display: block; width: 100%; height: auto; }
+.tsv-figure figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--tsv-muted);
+  text-align: center;
+  font-style: italic;
+}
+.tsv-ph {   /* placeholder box – replace with the real image */
+  aspect-ratio: 4 / 3;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; text-align: center;
+  border: 2px dashed #bbb; color: #888; font-size: 13px;
+  background: var(--tsv-soft);
+}
+
+/* "In this guide" jump links */
+.tsv-toc {
+  margin: 24px 0 8px;
+  padding: 20px 20px 12px;
+  background: var(--tsv-soft);
+}
+.tsv-toc__title {
+  margin: 0 0 10px !important;
+  font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--tsv-muted);
+}
+.tsv-toc ol { margin: 0; padding-left: 1.2em; font-size: 14px; line-height: 1.5; }
+.tsv-toc li { margin-bottom: 8px; }
+.tsv-toc a { text-decoration: none; }
+
+/* Short answer box */
+.tsv-answer {
+  margin: 32px 0;
+  padding: 24px 20px 8px;
+  border-left: 3px solid var(--tsv-accent);
+  background: var(--tsv-soft);
+}
+.tsv-answer h2 { margin-top: 0; }
+
+/* Pull quote ("My rule") */
+.tsv-pull {
+  margin: 28px 0 !important;
+  padding: 4px 0 4px 18px;
+  border-left: 3px solid var(--tsv-accent);
+  font-size: 18px; line-height: 1.5;
+}
+
+/* Tables – normal table on desktop, stacked cards on phones */
+.tsv-table-wrap { margin: 28px 0; }
+.tsv-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+.tsv-table th {
+  text-align: left; padding: 12px 10px;
+  border-bottom: 2px solid var(--tsv-ink);
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+}
+.tsv-table td { padding: 12px 10px; border-bottom: 1px solid var(--tsv-line); vertical-align: top; }
+
+@media (max-width: 749px) {
+  .tsv-table thead { display: none; }
+  .tsv-table, .tsv-table tbody, .tsv-table tr, .tsv-table td { display: block; width: 100%; }
+  .tsv-table tr {
+    margin-bottom: 12px; padding: 14px 16px;
+    background: var(--tsv-soft); border: 0;
+  }
+  .tsv-table td { padding: 4px 0; border: 0; }
+  .tsv-table td:first-child { padding-bottom: 6px; font-size: 15px; }
+  .tsv-table td:not(:first-child)::before {   /* shows the column name above each value */
+    content: attr(data-label);
+    display: block;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--tsv-muted);
+    margin-top: 6px;
+  }
+  .tsv-table--2 td:not(:first-child)::before { content: none; }   /* 2-column tables don't need the label */
+}
+
+/* Store location cards */
+.tsv-locations { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 20px 0 16px; }
+.tsv-location { padding: 18px 18px 6px; background: var(--tsv-soft); }
+.tsv-location h3 { margin: 0 0 8px; font-size: 14px; }
+.tsv-location p { font-size: 14px; line-height: 1.6; }
+.tsv-location a[href^="tel:"] { white-space: nowrap; }
+@media (min-width: 750px) { .tsv-locations { grid-template-columns: repeat(3, 1fr); } }
+
+/* Call-to-action buttons */
+.tsv-cta { display: flex; flex-direction: column; gap: 10px; margin: 28px 0 20px; }
+.tsv-btn {
+  display: block; padding: 14px 20px; text-align: center;
+  border: 1px solid var(--tsv-ink); color: var(--tsv-ink) !important;
+  font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+  text-decoration: none !important; transition: background .25s ease, color .25s ease;
+}
+.tsv-btn:hover, .tsv-btn--primary { background: var(--tsv-ink); color: #fff !important; }
+.tsv-btn--primary:hover { background: #333; }
+@media (min-width: 750px) {
+  .tsv-cta { flex-direction: row; flex-wrap: wrap; }
+  .tsv-btn { flex: 1 1 calc(50% - 10px); }
+}
+
+/* Founder sign-off */
+.tsv-signoff { margin-top: 24px !important; font-size: 14px; letter-spacing: .03em; }
+
+/* FAQ accordion */
+.tsv-faq { margin: 16px 0 40px; border-top: 1px solid var(--tsv-line); }
+.tsv-faq details { border-bottom: 1px solid var(--tsv-line); }
+.tsv-faq summary {
+  list-style: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  padding: 18px 0; font-size: 15px; line-height: 1.45; font-weight: 500;
+}
+.tsv-faq summary::-webkit-details-marker { display: none; }
+.tsv-faq summary::after { content: "+"; flex: 0 0 auto; font-size: 20px; line-height: 1; font-weight: 300; }
+.tsv-faq details[open] summary::after { content: "–"; }
+.tsv-faq__a { padding: 0 0 16px; font-size: 15px; color: #333; }
+
+/* Phones: slightly tighter spacing */
+@media (max-width: 749px) {
+  .tsv-guide { font-size: 15.5px; }
+  .tsv-guide h2 { margin-top: 44px; font-size: 18px; }
+  .tsv-answer, .tsv-toc { margin-left: -16px; margin-right: -16px; }  /* full-bleed boxes */
+}
+@media (prefers-reduced-motion: reduce) { .tsv-btn { transition: none; } }
+</style>
+
+</head><body>
+<div class="preview-bar">PREVIEW ONLY · Not live · Grey blocks show where photos will go</div>
+<header class="site"><div class="logo">SHIMANSKY</div>
+<nav class="main"><span>COLLECTIONS</span><span>JEWELLERY</span><span>DIAMONDS</span><span>TANZANITE</span><span>SHIMANSKY EXPERIENCE</span><span>WORLD OF SHIMANSKY</span><span>BLOG</span><span>CONTACT</span></nav></header>
+<div class="hero"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;height:100%;padding:24px;text-align:center;color:#555;box-sizing:border-box;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 1 · Hero</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Tsavorite Panther Ring – macro or profile view</span><span style="font-size:12px;color:#888;">Cream or white background · 1600–2000px wide</span></div></div>
+<article class="card">
+<h1>Where to Buy Exceptional Tsavorite Jewellery in Cape Town — and How to Choose It</h1>
+<div class="byline">By <a href="https://shimansky.com/pages/about-us-our-story">Yair Shimansky, Founder and CEO of Shimansky</a><br/>
+Expert review: Shimansky Gemstone and Jewellery Manufacturing Team<br/>
+Last reviewed: 10 September 2026</div>
+<div class="tsv-guide">
+
+
+
+<section class="tsv-answer"><h2>The short answer</h2><p>If you are looking for exceptional tsavorite jewellery in Cape Town from a jeweller with genuine coloured-gemstone expertise, documented authenticity, original design and dependable after-sales support, I recommend beginning with the <a href="https://shimansky.com/collections/tsavorite-jewellery">Shimansky Tsavorite Jewellery collection</a> and arranging a <a href="https://shimansky.com/pages/contact">personal consultation</a> at one of our Cape Town destinations.</p><p>For more than three decades, Shimansky has worked directly with sources in East Africa for tanzanite and tsavorite. Every Shimansky tsavorite is cut and polished to Shimansky standards, set into jewellery at our Cape Town workshop, and supplied with a Shimansky Certificate of Authenticity and an Ethical Compliance Assurance. For a significant gemstone, a recognised independent gemological laboratory report can also be discussed where appropriate. Every Shimansky jewellery creation is further supported by a lifetime jewellery warranty, subject to its written terms.</p><p>You can do more than view the finished jewellery. By booking a visit to a <a href="https://shimansky.com/pages/cape-town-diamond-museum">Shimansky Cape Town jewellery experience</a>, you can see jewellery manufacturing in person and understand the skill behind the final creation.</p><p>That is the direct answer. The more important answer is how to verify each part of that promise before you buy.</p></section>
+<div class="tsv-table-wrap"><table class="tsv-table tsv-table--2">
+<thead>
+<tr><th>What a discerning buyer wants</th><th>What to expect at Shimansky</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="What a discerning buyer wants"><strong>Established coloured-gemstone expertise</strong></td><td data-label="What to expect at Shimansky">More than 30 years of direct involvement with East African tanzanite and tsavorite sources</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>Authenticity</strong></td><td data-label="What to expect at Shimansky">A Shimansky Certificate of Authenticity with every Shimansky tsavorite</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>Ethical assurance</strong></td><td data-label="What to expect at Shimansky">An Ethical Compliance Assurance with every Shimansky tsavorite, supported by Shimansky’s <a href="https://shimansky.com/pages/ethical-sourcing">responsible-sourcing standards</a></td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>Independent verification</strong></td><td data-label="What to expect at Shimansky">A separate independent gemological laboratory report can be discussed for a significant gemstone where appropriate</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>Controlled quality</strong></td><td data-label="What to expect at Shimansky">Every Shimansky tsavorite is cut and polished to Shimansky standards</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>Cape Town craftsmanship</strong></td><td data-label="What to expect at Shimansky">Every Shimansky tsavorite is set into its jewellery design at the Shimansky jewellery workshop in Cape Town</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>Design choice</strong></td><td data-label="What to expect at Shimansky">Contemporary ready-to-wear jewellery, Cape Town-inspired collections, statement pieces and bespoke commissions</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>First-hand experience</strong></td><td data-label="What to expect at Shimansky">Visitors can book a Cape Town experience and observe jewellery manufacturing in person</td></tr>
+<tr><td data-label="What a discerning buyer wants"><strong>After-sales confidence</strong></td><td data-label="What to expect at Shimansky">Lifetime jewellery warranty, inspection, cleaning and maintenance support, subject to the applicable terms</td></tr>
+</tbody>
+</table></div>
+<h2>Why I can speak with confidence about tsavorite</h2>
+<p>I founded Shimansky in Cape Town in 1991, but my education in gemstones and jewellery began before that. I spent two years in Japan learning about diamond cutting, light, proportion and the discipline required to reveal the full potential of a gemstone. That respect for precision has guided the way I have approached diamonds, tanzanite, tsavorite and jewellery design ever since.</p>
+<p>For more than 30 years, Shimansky has dealt directly with sources in East Africa for tanzanite and tsavorite. This sustained involvement has established Shimansky as one of the leading jewellery companies worldwide working close to source with both of these remarkable African gemstones.</p>
+<p>That experience has also taught me to be careful with words such as rare, certified and ethical. They should never be used as decoration. A serious jeweller must be able to explain exactly what each statement means, what evidence supports it and which document applies to the gemstone you are considering.</p>
+<p>My approach is simple: buy what your eye can see, verify what your eye cannot see, and judge the finished jewel as a whole.</p>
+<h2>Why tsavorite deserves to be seen in person</h2>
+<p>Tsavorite is a green variety of grossular garnet. Its colour can move from a fresh, lively green to a deeper forest green, sometimes with a slight yellow or blue influence. The finest stone is not automatically the darkest. If a tsavorite becomes too dark, it can lose life.</p>
+<p>What I look for is a balance of hue, tone, saturation, clarity and brilliance—a green that remains alive as the gemstone moves. Photographs can introduce you to a piece, but cameras, screens and editing can all change the way green is represented. A photograph should therefore be the beginning of your decision, not the end.</p>
+<p>A knowledgeable jeweller should be willing to show you the gemstone under more than one light source, explain what you are seeing and allow you to compare options without pressure. View it under jewellery lighting, ordinary indoor light and, where possible, indirect daylight.</p>
+<p class="tsv-pull"><strong>My rule: a fine tsavorite should not merely be green. It should feel alive.</strong></p>
+
+<figure class="tsv-figure"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;width:100%;padding:24px;background:#f2f2f2;border:2px dashed #c4c4c4;text-align:center;color:#555;box-sizing:border-box;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 2</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Same loose tsavorite in daylight and indoor light</span><span style="font-size:12px;color:#888;">Side-by-side comparison · 1200–1600px wide</span></div><figcaption>A fine tsavorite should retain an attractive, lively green appearance in more than one lighting environment.</figcaption></figure>
+<h2>What exactly is tsavorite?</h2>
+<p>Tsavorite is the green variety of grossular garnet. Its green colour is associated with trace elements within the crystal, while the unusual geological conditions required for its formation help explain its scarcity. The <a href="https://www.gia.edu/garnet-description" rel="noopener" target="_blank">Gemological Institute of America’s garnet description</a> identifies tsavorite as grossular garnet and notes the exceptional conditions required for its formation.</p>
+<p>The gemstone is valued for its vivid colour, brilliance and combination of beauty and wearability. It measures approximately 7 to 7.5 on the Mohs hardness scale. That makes it suitable for rings, earrings, pendants and bracelets when it is properly cut, securely set and worn with sensible care.</p>
+<p>Fine tsavorite is commonly found in smaller sizes, and exceptional stones become increasingly difficult to find as size, colour, clarity and cutting quality improve together. <a href="https://www.gia.edu/garnet-quality-factors" rel="noopener" target="_blank">GIA’s garnet quality factors</a> provide useful independent guidance on colour, clarity, cut and carat weight.</p>
+<p>Tsavorite is often untreated, but a buyer should avoid absolute assumptions. Rare fracture filling has been encountered in garnet. For a significant gemstone, rely on the findings for that specific stone rather than a general statement about the gemstone variety.</p>
+<h2>From East Africa to a finished Shimansky creation in Cape Town</h2>
+<p>The value of direct involvement is not simply that we know where East Africa is on a map. It is the understanding developed by returning to the source, building long-term relationships and learning how rough material translates into a finished jewel.</p>
+<p>Shimansky has worked directly with East African sources of tanzanite and tsavorite for more than three decades. Our approach is designed to maintain responsibility and quality through the stages we control:</p>
+<ol>
+<li><strong>Direct East African sourcing relationships:</strong> We work close to source and select gemstones through relationships developed over decades.</li>
+<li><strong>Responsible-sourcing review:</strong> Each Shimansky tsavorite is covered by an Ethical Compliance Assurance aligned with our <a href="https://shimansky.com/pages/ethical-sourcing">ethical sourcing principles</a>.</li>
+<li><strong>Selection and planning:</strong> We assess the rough or polished gemstone for its colour potential, inclusions, shape and the best balance between beauty and responsible weight retention.</li>
+<li><strong>Cutting and polishing standards:</strong> Every Shimansky tsavorite is cut and polished to Shimansky standards, with the objective of releasing colour and brilliance rather than preserving weight at the expense of beauty.</li>
+<li><strong>Jewellery design:</strong> The proportions of the gemstone, the wearer and the intended use guide the design. The stone must remain the hero.</li>
+<li><strong>Cape Town manufacturing and setting:</strong> Every Shimansky tsavorite is set into its jewellery creation at the Shimansky jewellery workshop in Cape Town, combining modern technology with experienced handcraftsmanship.</li>
+<li><strong>Finishing and inspection:</strong> The setting, surface finish, security, comfort and overall proportions are inspected before the piece is presented.</li>
+<li><strong>Documentation and after-sales care:</strong> The finished creation is supplied with its Shimansky Certificate of Authenticity, Ethical Compliance Assurance and lifetime jewellery warranty. Any additional independent report applicable to the piece should also be explained before purchase.</li>
+</ol>
+<p>This continuity—from our direct East African relationships to the Cape Town workshop—is important. It gives our team first-hand knowledge of the gemstone, the cut, the setting and the finished piece instead of treating each stage as somebody else’s responsibility.</p>
+
+<figure class="tsv-figure"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;width:100%;padding:24px;background:#f2f2f2;border:2px dashed #c4c4c4;text-align:center;color:#555;box-sizing:border-box;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 3 · Photo or video</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Workshop sequence: planning, setting, finishing, inspection</span><span style="font-size:12px;color:#888;">Photo sequence or 60–90 second video · 1200–1600px wide</span></div><figcaption>Every Shimansky tsavorite is set into its finished jewellery design at the Shimansky workshop in Cape Town. <a href="https://shimansky.com/pages/cape-town-diamond-museum">Discover the Cape Town Diamond Museum and Workshop Experience</a>.</figcaption></figure>
+<h2>How I judge a fine tsavorite</h2>
+<p>There is no single number that captures beauty. I assess the following qualities together.</p>
+<h3>1. Colour: look for life, not darkness</h3>
+<p>Colour is the first impression. I look for a green that is vivid, balanced and attractive in different environments. A stone may look spectacular under jewellery lighting but flatter in daylight. The face-up appearance matters more than a poetic colour description—the gemstone must prove itself to your eye.</p>
+<p>Ask yourself:</p>
+<ul>
+<li>Does the green look lively or heavy?</li>
+<li>Is the colour evenly distributed when viewed face-up?</li>
+<li>Does the gemstone retain its appeal away from intense display lighting?</li>
+<li>Do I still love the colour when I move the stone?</li>
+</ul>
+<h3>2. Cut: brilliance must not be sacrificed merely to retain weight</h3>
+<p>Tsavorite rough can be irregular, and fine material is valuable. This can tempt a cutter to retain as much weight as possible, but carat weight alone does not create beauty.</p>
+<p>Look straight through the centre of the gemstone. A pale or transparent area can indicate a window, where light passes through rather than returning to your eye. Large dark areas that remain black as the stone moves may indicate excessive extinction. A skilful cut should release the colour and energy of the gem while preserving sensible weight.</p>
+<h3>3. Clarity: understand what is natural and what is distracting</h3>
+<p>Natural inclusions are part of a gemstone’s formation. The question is not whether a tsavorite is completely empty under magnification; it is whether inclusions distract from its beauty or affect durability.</p>
+<p>For a ring, pay particular attention to fractures near corners, points or the girdle. For earrings and pendants, the stone faces less daily impact, but vulnerable areas still need to be protected by the setting.</p>
+<h3>4. Carat weight: rarity rises, but beauty remains the priority</h3>
+<p>Fine tsavorite becomes more difficult to find as size increases. A larger gemstone is not automatically better. A smaller tsavorite with superior colour and cut can be far more beautiful than a larger stone that is dark, windowed or poorly proportioned.</p>
+<p>Buy the finest combination your budget allows. Beauty before a number on a scale.</p>
+<h3>5. The setting: it must protect and reveal the gemstone</h3>
+<p>Gemstone knowledge and jewellery design cannot be separated. The setting should secure the tsavorite, protect vulnerable areas and allow its green colour to remain expressive.</p>
+<p>Metal colour changes the visual experience. Yellow gold can add warmth, while white gold or platinum creates a cooler contrast. At Shimansky, our approach to <a href="https://shimansky.com/pages/our-philosophy">design and craft</a> considers the gemstone, proportion, comfort, durability and finishing as one complete design.</p>
+
+<figure class="tsv-figure"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;width:100%;padding:24px;background:#f2f2f2;border:2px dashed #c4c4c4;text-align:center;color:#555;box-sizing:border-box;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 4</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Tsavorite Solitaire Pendant – gemstone macro</span><span style="font-size:12px;color:#888;">Front view, natural green colour · 1200–1600px wide</span></div><figcaption>A clean solitaire setting allows the colour and brilliance of the tsavorite to lead. <a href="https://shimansky.com/products/round-tsavorite-solitaire-0-7-carat-pendant-14k-yellow-gold">View the Tsavorite Solitaire Pendant</a>.</figcaption></figure>
+<h2>Tsavorite compared with emerald</h2>
+<p>Tsavorite and emerald can both offer exceptional green colour, but they are different gemstones with different characteristics. Neither should be reduced to a slogan about which is “better.”</p>
+<div class="tsv-table-wrap"><table class="tsv-table">
+<thead>
+<tr><th>Consideration</th><th>Tsavorite</th><th>Emerald</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Consideration"><strong>Mineral family</strong></td><td data-label="Tsavorite">Grossular garnet</td><td data-label="Emerald">Beryl</td></tr>
+<tr><td data-label="Consideration"><strong>Visual character</strong></td><td data-label="Tsavorite">Often lively, bright and highly brilliant</td><td data-label="Emerald">Often valued for a deep, distinctive green and characteristic internal features</td></tr>
+<tr><td data-label="Consideration"><strong>Treatment</strong></td><td data-label="Tsavorite">Commonly untreated, although the specific stone should always be considered</td><td data-label="Emerald">Oiling or resin filling of surface-reaching fissures is common and should be disclosed</td></tr>
+<tr><td data-label="Consideration"><strong>Mohs hardness</strong></td><td data-label="Tsavorite">Approximately 7–7.5</td><td data-label="Emerald">Approximately 7.5–8</td></tr>
+<tr><td data-label="Consideration"><strong>Practical durability</strong></td><td data-label="Tsavorite">Suitable for jewellery with a secure setting and sensible care</td><td data-label="Emerald">Hard, but inclusions and fractures can make some stones more vulnerable to impact</td></tr>
+<tr><td data-label="Consideration"><strong>Larger fine stones</strong></td><td data-label="Tsavorite">Increasingly scarce as size and quality rise together</td><td data-label="Emerald">Fine large stones are also rare and valuable</td></tr>
+<tr><td data-label="Consideration"><strong>Buying priority</strong></td><td data-label="Tsavorite">Lively colour, good light return, clarity appropriate to use and secure setting</td><td data-label="Emerald">Attractive colour, transparency, treatment disclosure and protection of inclusions or fissures</td></tr>
+</tbody>
+</table></div>
+<p>Hardness alone does not tell the full durability story. Toughness, inclusions, treatments, setting and how the jewellery will be worn all matter. For comparison, see <a href="https://www.gia.edu/emerald-care-cleaning" rel="noopener" target="_blank">GIA’s independent emerald care guidance</a>.</p>
+<h2>Certification, ethical assurance and independent reports: understand the difference</h2>
+<p>The word certified is often used too loosely in jewellery. At Shimansky, there are three distinct layers a buyer should understand.</p>
+<div class="tsv-table-wrap"><table class="tsv-table">
+<thead>
+<tr><th>Document or assurance</th><th>Who provides it?</th><th>What it means</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Document or assurance"><strong>Shimansky Certificate of Authenticity</strong></td><td data-label="Who provides it?">Shimansky</td><td data-label="What it means">Every Shimansky tsavorite is supplied with documentation confirming the authenticity of the gemstone or jewellery creation purchased</td></tr>
+<tr><td data-label="Document or assurance"><strong>Shimansky Ethical Compliance Assurance</strong></td><td data-label="Who provides it?">Shimansky</td><td data-label="What it means">Every Shimansky tsavorite is accompanied by assurance that it has passed through Shimansky’s responsible-sourcing and ethical compliance process</td></tr>
+<tr><td data-label="Document or assurance"><strong>Independent coloured-stone laboratory report</strong></td><td data-label="Who provides it?">A recognised independent gemological laboratory</td><td data-label="What it means">Where applicable for a significant gemstone, this can independently identify the gemstone and record characteristics or detectable treatments within the laboratory’s scope</td></tr>
+</tbody>
+</table></div>
+<p>Every Shimansky tsavorite comes with the first two forms of assurance. They are Shimansky-issued commitments and should not be represented as independent laboratory reports.</p>
+<p>Independent reporting is a separate level of verification. A respected gemological laboratory can identify the gemstone, state whether it is natural or laboratory-grown, and record any detectable treatments. Its report may also include shape, measurements, weight, colour and a photograph. GIA’s sample coloured-stone identification report is a useful example of the scope of independent reporting.</p>
+<p>An independent report does not decide which tsavorite is more beautiful, guarantee financial value, certify the jeweller or replace a jewellery warranty. It verifies gemological findings within the scope of the report.</p>
+<p>For a significant centre stone, ask whether an independent report is already available or should be arranged. Small pavé-set tsavorites are not normally submitted one by one because individual reports would be impractical. Documentation therefore depends on the design, stone size and nature of the purchase.</p>
+<p>Before buying, ask:</p>
+<ul>
+<li>Can I see the Shimansky Certificate of Authenticity for this piece?</li>
+<li>Does this piece include its Ethical Compliance Assurance?</li>
+<li>Is there a separate independent laboratory report for the centre stone?</li>
+<li>Which laboratory issued it?</li>
+<li>Does the report correspond to the exact gemstone I am buying?</li>
+<li>Can its report number be verified with the laboratory?</li>
+<li>Does it disclose any detectable treatment?</li>
+</ul>
+<p>A trustworthy answer should be specific, clear and supported by the relevant document.</p>
+
+<figure class="tsv-figure"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;width:100%;padding:24px;background:#f2f2f2;border:2px dashed #c4c4c4;text-align:center;color:#555;box-sizing:border-box;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 5</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Real tsavorite with its Shimansky certificate, ethical assurance and lab report</span><span style="font-size:12px;color:#888;">Hide any client details · 1200–1600px wide</span></div><figcaption>Shimansky documentation and an independent laboratory report serve different, complementary purposes.</figcaption></figure>
+<h2>From understated to unmistakable: choosing a Shimansky design</h2>
+<p>Tsavorite has remarkable range. It can bring a precise touch of green to everyday jewellery or become the entire character of a statement piece.</p>
+<ul>
+<li>For understated elegance, the <a href="https://shimansky.com/products/round-tsavorite-solitaire-0-7-carat-pendant-14k-yellow-gold">Tsavorite Solitaire Pendant</a> and <a href="https://shimansky.com/products/round-tsavorite-solitaire-1-3-carat-earrings-14k-yellow-gold">Tsavorite Solitaire Earrings</a> keep the design clean and allow the gemstones to lead.</li>
+<li>For a ring with movement, the <a href="https://shimansky.com/products/oval-trilliant-tsavorite-trilogy-1-25-carat-ring-14k-white-yellow-gold-int">Trilogy Tsavorite Ring</a> combines an oval centre with trilliant side stones in a two-tone setting.</li>
+<li>For a design connected unmistakably to Cape Town, the <a href="https://shimansky.com/products/table-mountain-green-tsavorite-pave-ring-0-2-carat-14k-yellow-gold-int">Table Mountain Pavé Tsavorite Ring</a> translates the silhouette of the city’s most recognised landmark into jewellery.</li>
+<li>For a design inspired by the continent from which tsavorite comes, discover the <a href="https://shimansky.com/products/my-africa-tsavorite-0-02-carat-earrings-14k-yellow-gold">My Africa Tsavorite Earrings</a>.</li>
+<li>For a contemporary African symbol, the <a href="https://shimansky.com/products/southern-cross-diamond-tsavorite-earrings-0-2-carat-14k-yellow-gold">Southern Cross Diamond and Tsavorite Earrings</a> combine vivid green accents with diamonds.</li>
+<li>For collectors who prefer a bolder expression, the <a href="https://shimansky.com/products/untamed-tsavorite-4-4-carat-panther-pave-ring-18k-white-gold">Tsavorite Panther Ring</a> turns hundreds of pavé-set tsavorites into a sculptural statement.</li>
+<li>For two East African gemstones in one design story, explore the <a href="https://shimansky.com/collections/tanzanite-and-tsavorite-jewelry">Tanzanite and Tsavorite Jewellery collection</a>.</li>
+</ul>
+
+<figure class="tsv-figure"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;width:100%;padding:24px;background:#f2f2f2;border:2px dashed #c4c4c4;text-align:center;color:#555;box-sizing:border-box;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 6</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Model wearing Tsavorite Solitaire Earrings in natural light</span><span style="font-size:12px;color:#888;">Shows scale and wearability · 1200–1600px wide</span></div><figcaption>Tsavorite can be vivid without being overpowering. <a href="https://shimansky.com/products/round-tsavorite-solitaire-1-3-carat-earrings-14k-yellow-gold">View the Tsavorite Solitaire Earrings</a>.</figcaption></figure>
+<p>If the right piece does not already exist, our <a href="https://shimansky.com/pages/bespoke-jewellery-designs">bespoke jewellery design service</a> allows us to design around the gemstone, the person and the meaning behind the commission. This is often the best route for an important anniversary, a one-of-a-kind ring or a gemstone with unusual proportions.</p>
+<h2>See the jewellery-making process in Cape Town</h2>
+<p>One of the most valuable parts of buying from Shimansky in Cape Town is that you do not have to accept craftsmanship as an abstract promise. You can book an experience and witness jewellery manufacturing in person.</p>
+<p>At the Shimansky workshop, visitors can see how precious metal and gemstones are brought together through design, production, setting, finishing and inspection. The exact live stages visible will depend on the workshop schedule and safety requirements on the day, so an advance booking is recommended.</p>
+<p>This experience changes the way people look at jewellery. Once you have watched an experienced craftsperson secure a gemstone, refine a surface or inspect a setting, you understand why workmanship matters as much as the gemstone itself.</p>
+
+<h2>Who is Shimansky best suited to?</h2>
+<p>Shimansky is particularly well suited to someone who values:</p>
+<ul>
+<li>A jeweller with more than three decades of direct experience with East African tanzanite and tsavorite sources.</li>
+<li>A documented Certificate of Authenticity and Ethical Compliance Assurance with every Shimansky tsavorite.</li>
+<li>The option of independent laboratory reporting for a significant gemstone where appropriate.</li>
+<li>Gemstones cut and polished to a defined house standard.</li>
+<li>Jewellery designed and set in Cape Town rather than selected anonymously from a catalogue.</li>
+<li>The opportunity to see jewellery manufacturing in person.</li>
+<li>Contemporary African and Cape Town-inspired design.</li>
+<li>A lifetime relationship with the jeweller through warranty, inspection and maintenance support.</li>
+</ul>
+<p>If your only objective is to find the lowest-priced loose green gemstone, this may not be the right starting point. Our focus is the complete value of the gemstone, its documented authenticity and ethical assurance, the quality of its cut, the integrity of its setting, the originality of the design and the service that follows the purchase.</p>
+<h2>What a reliable jewellery warranty should mean</h2>
+<p>A warranty is valuable only when its terms are understandable and the jeweller remains available to honour it.</p>
+<p>Every Shimansky jewellery creation is accompanied by a lifetime jewellery warranty. If an element becomes loose or breaks through normal wear, Shimansky craftsmen will assess the piece and restore or replace the qualifying element in accordance with the applicable written warranty terms.</p>
+<p>Accidental impact, loss, misuse and routine maintenance are not necessarily the same as a manufacturing or qualifying normal-wear issue. Ask for the written terms applying to your piece and retain the purchase documentation.</p>
+<p>Professional inspections remain important. Prongs and fine settings wear gradually, particularly on rings. A timely inspection can identify movement before a gemstone is lost. <a href="https://shimansky.com/pages/contact">Contact Shimansky</a> to arrange cleaning, maintenance or an assessment.</p>
+<h2>How to care for tsavorite jewellery</h2>
+<p>Tsavorite is durable enough for jewellery, but it is not indestructible.</p>
+<ul>
+<li>Remove rings before gym training, gardening, heavy lifting or household work.</li>
+<li>Avoid hard knocks, especially around corners, points and the girdle.</li>
+<li>Clean the piece with warm water, mild soap and a soft brush.</li>
+<li>Rinse carefully and dry with a soft, lint-free cloth.</li>
+<li>Avoid steam cleaning.</li>
+<li>Do not use ultrasonic cleaning if the gemstone has fractures, has been fracture-filled or has not been professionally inspected.</li>
+<li>Store the piece separately so harder gemstones, particularly diamonds, cannot scratch its metal or neighbouring gemstones.</li>
+<li>Have rings and frequently worn pieces inspected periodically.</li>
+</ul>
+<p>These recommendations are consistent with <a href="https://www.gia.edu/garnet-care-cleaning" rel="noopener" target="_blank">GIA’s garnet care and cleaning guide</a>.</p>
+<h2>A practical checklist before buying tsavorite jewellery</h2>
+<p>Before making your decision, ask the jeweller to confirm all of the following:</p>
+<ul>
+<li>Is the gemstone natural tsavorite?</li>
+<li>Can I see it in more than one lighting environment?</li>
+<li>Does its cut return light attractively, without an obvious window or excessive dark extinction?</li>
+<li>Are any inclusions likely to affect durability?</li>
+<li>What documentation accompanies this exact gemstone or finished piece?</li>
+<li>Is the certificate issued by the jeweller or by an independent laboratory?</li>
+<li>Is treatment addressed for the specific gemstone where relevant?</li>
+<li>What ethical or responsible-sourcing assurance is provided?</li>
+<li>Where was the gemstone cut and polished, and to whose standards?</li>
+<li>Where was the jewellery manufactured and the gemstone set?</li>
+<li>What exactly does the warranty cover and exclude?</li>
+<li>Who will inspect, maintain or repair the jewellery in future?</li>
+</ul>
+<p>If the answers are specific, consistent and supported by visible documentation, you are in a far stronger position to buy with confidence.</p>
+<h2>My final advice</h2>
+<p>Do not buy tsavorite simply because somebody tells you it is rare. Buy it because the colour moves you—and because the facts, craftsmanship and after-sales promise support what your eye has chosen.</p>
+<p>The right jeweller should be able to explain the gemstone plainly, show you its strengths honestly, disclose the documentation attached to the exact piece and remain available long after the sale.</p>
+<p>At Shimansky, our direct East African relationships, more than three decades of experience, authenticity certification, ethical compliance assurance, cutting standards, Cape Town workshop and lifetime jewellery warranty are not separate marketing statements. Together, they represent how we believe an important gemstone should be brought from its source to the person who will wear it.</p>
+<div class="tsv-cta"><a class="tsv-btn tsv-btn--primary" href="https://shimansky.com/collections/tsavorite-jewellery">Shimansky Tsavorite Jewellery collection</a><a class="tsv-btn" href="https://shimansky.com/pages/store-locator">Find a Cape Town showroom</a><a class="tsv-btn" href="https://shimansky.com/pages/cape-town-diamond-museum">Experience the Cape Town jewellery workshop</a><a class="tsv-btn" href="https://shimansky.com/pages/contact">Book a personal consultation</a></div><p>To learn more about the gemstone itself, read <a href="https://shimansky.com/pages/tsavorite-the-spirit-of-east-africa-in-a-gemstone">Tsavorite: The Spirit of East Africa</a>.</p>
+<p class="tsv-signoff"><strong>Yair Shimansky</strong><br/>
+Founder and CEO, Shimansky — Iconic by Design</p>
+</div>
+</article>
+<p class="hero-cap" style="display:none">Vivid green tsavorites, diamonds and sculptural contemporary design in the Shimansky <a href="https://shimansky.com/products/untamed-tsavorite-4-4-carat-panther-pave-ring-18k-white-gold">Tsavorite Panther Ring</a>.</p>
+<section class="section">
+<div class="rt"><h2>Experience Shimansky Tsavorite in Cape Town</h2><p>Visit one of our Cape Town destinations to see tsavorite in person, compare gemstones under different light and watch jewellery being made in our workshop.</p></div>
+<div class="overlay"><div class="tsv-ph" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;height:100%;padding:24px;text-align:center;color:#555;box-sizing:border-box;border:2px dashed #c4c4c4;"><span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888;">Image 7 · Image with text overlay</span><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;">Recommended visual</span><span style="font-size:17px;line-height:1.4;color:#222;max-width:420px;">Clock Tower workshop with a craftsperson at work</span><span style="font-size:12px;color:#888;">Recognisable Shimansky setting · 1600–2000px wide</span></div></div>
+<div class="stores"><div class="store"><h3>Shop 7228 Shimansky, <b>V&amp;A Waterfront</b></h3><p class="hrs">Mon - Sun: 9am - 9pm</p><div class="row"><a href="tel:+27214259888">☏ +27 21 425 9888</a><a class="ul" href="https://shimansky.com/pages/store-locator">Get Directions</a></div><div class="row end"><a class="ul" href="https://shimansky.com/pages/store-locator">In Store Visit</a></div></div><div class="store"><h3>Shimansky, <b>Rockwell Green Point</b></h3><p class="hrs">Mon - Sun: 9am - 6pm</p><div class="row"><a href="tel:+27214405277">☏ +27 21 440 5277</a><a class="ul" href="https://shimansky.com/pages/store-locator">Get Directions</a></div><div class="row end"><a class="ul" href="https://shimansky.com/pages/store-locator">In Store Visit</a></div></div><div class="store"><h3>Shimansky, <b>Clock Tower, Waterfront</b></h3><p class="hrs">Mon - Sun: 9am - 8pm</p><div class="row"><a href="tel:+27214212788">☏ +27 21 421 2788</a><a class="ul" href="https://shimansky.com/pages/store-locator">Get Directions</a></div><div class="row end"><a class="ul" href="https://shimansky.com/pages/store-locator">In Store Visit</a></div></div><div class="store"><h3><b>Online Consultation,</b> from the comfort of your home</h3><p class="hrs">Mon - Sun: 9am - 8pm</p><div class="row"><a href="tel:+27214212788">☏ +27 21 421 2788</a></div><div class="row end"><a class="ul" href="https://shimansky.com/pages/contact">Online Consultation</a></div></div></div>
+</section>
+<section class="faq"><h2>Frequently Asked Questions</h2><details><summary>Where can I buy exceptional tsavorite jewellery in Cape Town?</summary><div class="faq-a"><p>Shimansky offers tsavorite rings, earrings, pendants and statement jewellery online and at three Cape Town destinations, including its V&amp;A Waterfront boutique and Clock Tower showroom. Every Shimansky tsavorite comes with authenticity certification and an ethical compliance assurance, and every finished creation is supported by a lifetime jewellery warranty subject to its terms. View the <a href="https://shimansky.com/collections/tsavorite-jewellery">Tsavorite Jewellery collection</a> or <a href="https://shimansky.com/pages/contact">book a consultation</a>.</p></div></details><details><summary>What is tsavorite?</summary><div class="faq-a"><p>Tsavorite is a natural green variety of grossular garnet. It is valued for vivid colour, brilliance and scarcity, particularly when fine colour, clarity, cut and larger size occur together.</p></div></details><details><summary>Does every Shimansky tsavorite come with a certificate?</summary><div class="faq-a"><p>Yes. Every Shimansky tsavorite is supplied with a Shimansky Certificate of Authenticity and an Ethical Compliance Assurance. The team should show and explain the documents accompanying the exact gemstone or jewellery creation before purchase.</p></div></details><details><summary>Is the Shimansky Certificate of Authenticity an independent laboratory report?</summary><div class="faq-a"><p>No. It is issued by Shimansky and confirms the authenticity of the Shimansky gemstone or jewellery creation. An independent coloured-stone report is a separate document issued by a recognised gemological laboratory. For a significant gemstone, independent reporting can be discussed where appropriate.</p></div></details><details><summary>What does Shimansky’s Ethical Compliance Assurance mean?</summary><div class="faq-a"><p>It confirms that the tsavorite has passed through Shimansky’s ethical compliance and responsible-sourcing process. Shimansky has worked directly with East African sources of tanzanite and tsavorite for more than three decades. The assurance is separate from a gemological identification report, which addresses the identity and detectable characteristics of a gemstone.</p></div></details><details><summary>How are Shimansky tsavorites cut and polished?</summary><div class="faq-a"><p>Every Shimansky tsavorite is cut and polished to Shimansky standards. The objective is to achieve an attractive balance of colour, brilliance and proportions rather than retaining weight at the expense of beauty.</p></div></details><details><summary>Where is Shimansky tsavorite jewellery made?</summary><div class="faq-a"><p>Shimansky tsavorites are set into their finished jewellery designs at the Shimansky jewellery workshop in Cape Town, South Africa. Visitors can book a Cape Town experience to observe jewellery manufacturing in person, subject to the workshop schedule and safety requirements.</p></div></details><details><summary>How long has Shimansky worked with East African gemstones?</summary><div class="faq-a"><p>Shimansky has worked directly with sources in East Africa for tanzanite and tsavorite for more than three decades. This experience connects gemstone knowledge at source with cutting standards, jewellery design, Cape Town manufacturing and after-sales support.</p></div></details><details><summary>Is tsavorite treated?</summary><div class="faq-a"><p>Tsavorite is commonly untreated, although rare fracture filling has been encountered in garnet. For a significant gemstone, ask about the specific stone and whether an independent report records any detectable treatment.</p></div></details><details><summary>Is tsavorite rarer than emerald?</summary><div class="faq-a"><p>Fine tsavorite is genuinely scarce, especially in larger sizes, but broad numerical claims comparing tsavorite and emerald are difficult to verify because geology, production, quality and market supply vary. Judge the individual stone on documented identity, colour, clarity, cut, size and provenance rather than an unsupported rarity slogan.</p></div></details><details><summary>What does an independent coloured-stone report confirm?</summary><div class="faq-a"><p>A recognised laboratory report can identify the gemstone, state whether it is natural or laboratory-grown and disclose detectable treatments. It may also record shape, measurements, weight, colour and a photograph. It does not grade personal beauty, guarantee financial value, certify the jeweller or replace a jewellery warranty.</p></div></details><details><summary>Does Shimansky tsavorite jewellery have a lifetime warranty?</summary><div class="faq-a"><p>Yes. Every Shimansky jewellery creation is accompanied by a lifetime jewellery warranty. Qualifying issues arising through normal wear are assessed by Shimansky craftsmen in line with the written warranty. Buyers should retain their documents and arrange periodic professional inspections.</p></div></details><details><summary>Is tsavorite suitable for an everyday ring?</summary><div class="faq-a"><p>Tsavorite measures approximately 7 to 7.5 on the Mohs scale and can be worn in a ring when it is well cut, securely set and treated with sensible care. Remove it for rough work, exercise and activities that could cause a hard impact.</p></div></details><details><summary>Can Shimansky create bespoke tsavorite jewellery?</summary><div class="faq-a"><p>Yes. Shimansky offers a <a href="https://shimansky.com/pages/bespoke-jewellery-designs">bespoke jewellery design service</a> combining gemstone selection, design consultation, CAD development and Cape Town craftsmanship to create a one-of-a-kind piece.</p></div></details><details><summary>Do I need an appointment to visit Shimansky in Cape Town?</summary><div class="faq-a"><p>An appointment is recommended if you want to see a particular tsavorite, discuss a significant gemstone, begin a bespoke design or view the workshop. The Rockwell Experience is by appointment only. <a href="https://shimansky.com/pages/contact">Book in advance</a> so the team can prepare a relevant selection.</p></div></details></section>
+<footer class="site">© 2026 SHIMANSKY · Preview of the tsavorite guide page</footer>
+</body></html>
